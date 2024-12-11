@@ -1,0 +1,7 @@
+<resources>
+    <color name="colorPrimary">#BBDEFB</color> <!-- Light blue for dark theme -->
+    <color name="colorPrimaryVariant">#90CAF9</color> <!-- Lighter blue -->
+    <color name="colorOnPrimary">#000000</color> <!-- Black text on primary -->
+    <color name="colorBackground">#121212</color> <!-- Dark background -->
+    <color name="colorOnBackground">#FFFFFF</color> <!-- White text on background -->
+</resources>

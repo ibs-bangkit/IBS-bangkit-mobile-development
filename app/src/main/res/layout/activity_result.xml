@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    tools:text="Confidence: 99.99%" />
+                    tools:text="Accuracy: 99.99%" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

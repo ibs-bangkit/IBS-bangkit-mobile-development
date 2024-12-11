@@ -1,5 +1,6 @@
 package com.example.ibscapstone.di
 
+import com.example.ibscapstone.ErrorLoggingInterceptor
 import com.example.ibscapstone.network.ApiService
 import dagger.Module
 import dagger.Provides
@@ -23,6 +24,7 @@ object NetworkModule {
 
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(ErrorLoggingInterceptor())
             .build()
 
         return Retrofit.Builder()

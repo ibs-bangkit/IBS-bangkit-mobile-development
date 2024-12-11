@@ -1,5 +1,6 @@
 package com.example.ibscapstone.ui.result
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,14 +23,26 @@ class ResultViewModel @Inject constructor(
         viewModelScope.launch {
             _predictionState.value = ResultState.Loading
 
-            repository.predictImage(imageFile).fold(
-                onSuccess = { response ->
-                    _predictionState.value = ResultState.Success(response.data)
-                },
-                onFailure = { exception ->
-                    _predictionState.value = ResultState.Error(exception.message ?: "Unknown error occurred")
-                }
-            )
+            try {
+                val result = repository.predictImage(imageFile)
+                result.fold(
+                    onSuccess = { response ->
+                        _predictionState.value = ResultState.Success(response.data)
+                    },
+                    onFailure = { exception ->
+                        val errorMessage = when (exception.message) {
+                            "Server error. Please try again later" -> exception.message
+                            "Image file is too large" -> "Please use a smaller image file"
+                            "Network error. Please check your connection" -> exception.message
+                            else -> "An error occurred while analyzing the image"
+                        }
+                        _predictionState.value = ResultState.Error(errorMessage ?: "Unknown error occurred")
+                    }
+                )
+            } catch (e: Exception) {
+                Log.e("AnalyzeImageError", "Error while analyzing image", e)
+                _predictionState.value = ResultState.Error("An unexpected error occurred")
+            }
         }
     }
 }

@@ -9,18 +9,15 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.ibscapstone.R
 import com.example.ibscapstone.databinding.FragmentHomeBinding
 import com.example.ibscapstone.ui.camera.CameraActivity
-import com.example.ibscapstone.ui.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,19 +49,9 @@ class HomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_logout -> {
-                viewModel.logout()
-                navigateToLogin()
-                true
-            }
+            // Remove the logout option
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun navigateToLogin() {
-        val intent = Intent(requireContext(), LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
     }
 
     override fun onDestroyView() {

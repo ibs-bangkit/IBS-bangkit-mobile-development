@@ -50,7 +50,10 @@ class ResultActivity : AppCompatActivity() {
                 }
                 is ResultState.Error -> {
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, state.message, Toast.LENGTH_SHORT).show()
+                    binding.contentGroup.visibility = View.GONE
+                    Toast.makeText(this, state.message, Toast.LENGTH_LONG).show()
+                    // Optional: Add a retry button or finish the activity
+                    finish()
                 }
             }
         }
