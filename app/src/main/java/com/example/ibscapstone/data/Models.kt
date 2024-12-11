@@ -35,3 +35,17 @@ data class PredictionData(
     val confidenceScore: Double,
     val createdAt: String
 )
+
+data class ArticleResponse(
+    val error: Boolean,
+    val message: String,
+    val data: List<Article>
+)
+
+data class Article(
+    val id: String,
+    val title: String,
+    val description: String,
+    val imageUrl: String,
+    val content: String
+)

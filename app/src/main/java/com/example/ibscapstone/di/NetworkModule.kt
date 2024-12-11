@@ -28,7 +28,7 @@ object NetworkModule {
             .build()
 
         return Retrofit.Builder()
-            .baseUrl("https://ibs-app-api.et.r.appspot.com/")
+            .baseUrl("https://ibs-app-api-971582374301.asia-southeast2.run.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

@@ -3,13 +3,10 @@ package com.example.ibscapstone.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.ibscapstone.R
 import com.example.ibscapstone.databinding.FragmentHomeBinding
 import com.example.ibscapstone.ui.camera.CameraActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,11 +37,6 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), CameraActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -152,6 +152,19 @@ class Repository @Inject constructor(
         }
     }
 
+    suspend fun getArticles(): Result<List<Article>> {
+        return try {
+            val response = apiService.getArticles()
+            if (!response.error) {
+                Result.success(response.data)
+            } else {
+                Result.failure(Exception(response.message))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun logout() {
         userPreferences.clearToken()
     }

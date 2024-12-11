@@ -1,5 +1,6 @@
 package com.example.ibscapstone.network
 
+import com.example.ibscapstone.data.ArticleResponse
 import com.example.ibscapstone.data.LoginRequest
 import com.example.ibscapstone.data.LoginResponse
 import com.example.ibscapstone.data.PredictionResponse
@@ -7,11 +8,16 @@ import com.example.ibscapstone.data.RegisterRequest
 import com.example.ibscapstone.data.RegisterResponse
 import okhttp3.MultipartBody
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 
 interface ApiService {
+
+    @GET("articles")
+    suspend fun getArticles(): ArticleResponse
+
     @POST("register")
     suspend fun register(@Body request: RegisterRequest): RegisterResponse
 

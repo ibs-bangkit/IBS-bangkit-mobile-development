@@ -1,5 +1,6 @@
 package com.example.ibscapstone.ui.result
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -15,6 +16,7 @@ import java.io.File
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
     private val viewModel: ResultViewModel by viewModels()
+    private var imagePath: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +26,10 @@ class ResultActivity : AppCompatActivity() {
         setupToolbar()
         observeViewModel()
 
-        // Get image path from intent
+        // Get image path from intent and display the image
         intent.getStringExtra(EXTRA_IMAGE_PATH)?.let { path ->
+            imagePath = path
+            displayImage(path)
             viewModel.analyzeImage(File(path))
         }
     }
@@ -34,6 +38,16 @@ class ResultActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
+
+    private fun displayImage(path: String) {
+        try {
+            // Load the image from file and set it to the ImageView
+            val bitmap = BitmapFactory.decodeFile(path)
+            binding.imageResult.setImageBitmap(bitmap)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun observeViewModel() {
@@ -52,7 +66,6 @@ class ResultActivity : AppCompatActivity() {
                     binding.progressBar.visibility = View.GONE
                     binding.contentGroup.visibility = View.GONE
                     Toast.makeText(this, state.message, Toast.LENGTH_LONG).show()
-                    // Optional: Add a retry button or finish the activity
                     finish()
                 }
             }

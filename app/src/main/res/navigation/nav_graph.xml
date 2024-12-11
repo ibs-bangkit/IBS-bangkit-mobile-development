@@ -10,6 +10,11 @@
         android:label="Home" />
 
     <fragment
+        android:id="@+id/navigation_article"
+        android:name="com.example.ibscapstone.ui.article.ArticleFragment"
+        android:label="Articles" />
+
+    <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.ibscapstone.ui.settings.SettingsFragment"
         android:label="Settings" />
