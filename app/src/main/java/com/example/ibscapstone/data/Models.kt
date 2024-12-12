@@ -1,5 +1,10 @@
 package com.example.ibscapstone.data
 
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
 data class RegisterRequest(
     val email: String,
     val password: String
@@ -37,10 +42,11 @@ data class PredictionData(
     val resource: String
 )
 
+@Parcelize
 data class Article(
     val id: String,
     val image_url: String,
     val title: String,
     val description: String,
     val content: String
-)
+) : Parcelable

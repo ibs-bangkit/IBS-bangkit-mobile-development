@@ -1,5 +1,6 @@
 package com.example.ibscapstone.ui.article
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ibscapstone.data.Article
 import com.example.ibscapstone.databinding.ItemArticleBinding
-import com.example.ibscapstone.ui.GlideApp
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
     private var articles = listOf<Article>()
@@ -45,7 +45,15 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
                     .load(article.image_url)
                     .centerCrop()
                     .into(ivArticle)
-                Log.d("ArticleAdapter", "Image URL: ${article.image_url}")
+
+                // Set click listener
+                root.setOnClickListener {
+                    val context = binding.root.context
+                    val intent = Intent(context, DetailArticleActivity::class.java).apply {
+                        putExtra(DetailArticleActivity.EXTRA_ARTICLE, article)
+                    }
+                    context.startActivity(intent)
+                }
             }
         }
     }
