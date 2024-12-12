@@ -32,20 +32,15 @@ data class PredictionData(
     val result: String,
     val explanation: String,
     val suggestion: String,
-    val confidenceScore: Double,
-    val createdAt: String
-)
-
-data class ArticleResponse(
-    val error: Boolean,
-    val message: String,
-    val data: List<Article>
+    val accuracy: Double,
+    val createdAt: String,
+    val resource: String
 )
 
 data class Article(
     val id: String,
+    val image_url: String,
     val title: String,
     val description: String,
-    val imageUrl: String,
     val content: String
 )

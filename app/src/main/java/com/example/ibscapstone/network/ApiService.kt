@@ -1,6 +1,6 @@
 package com.example.ibscapstone.network
 
-import com.example.ibscapstone.data.ArticleResponse
+import com.example.ibscapstone.data.Article
 import com.example.ibscapstone.data.LoginRequest
 import com.example.ibscapstone.data.LoginResponse
 import com.example.ibscapstone.data.PredictionResponse
@@ -16,7 +16,7 @@ import retrofit2.http.Part
 interface ApiService {
 
     @GET("articles")
-    suspend fun getArticles(): ArticleResponse
+    suspend fun getArticles(): List<Article>
 
     @POST("register")
     suspend fun register(@Body request: RegisterRequest): RegisterResponse

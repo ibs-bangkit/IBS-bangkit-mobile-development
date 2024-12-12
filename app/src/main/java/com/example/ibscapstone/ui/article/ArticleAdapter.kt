@@ -1,11 +1,13 @@
 package com.example.ibscapstone.ui.article
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ibscapstone.data.Article
 import com.example.ibscapstone.databinding.ItemArticleBinding
+import com.example.ibscapstone.ui.GlideApp
 
 class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
     private var articles = listOf<Article>()
@@ -34,15 +36,16 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(article: Article) {
-            binding.apply {
+            with(binding) {
                 articleTitle.text = article.title
                 articleDescription.text = article.description
 
                 // Load image using Glide
-                Glide.with(articleImage.context)
-                    .load(article.imageUrl)
+                Glide.with(binding.root.context)
+                    .load(article.image_url)
                     .centerCrop()
-                    .into(articleImage)
+                    .into(ivArticle)
+                Log.d("ArticleAdapter", "Image URL: ${article.image_url}")
             }
         }
     }

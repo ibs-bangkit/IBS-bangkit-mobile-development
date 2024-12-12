@@ -77,7 +77,8 @@ class ResultActivity : AppCompatActivity() {
             textResult.text = data.result
             textExplanation.text = data.explanation
             textSuggestion.text = data.suggestion
-            textConfidence.text = getString(R.string.confidence_format, data.confidenceScore)
+            textAccuracy.text = getString(R.string.confidence_format, data.accuracy)
+            textResources.text = data.resource
         }
     }
 

@@ -10,5 +10,7 @@
     <string name="result_title">Result</string>
     <string name="explanation_title">Description</string>
     <string name="suggestion_title">Suggestion</string>
-    <string name="confidence_format">Confidence: %.2f%%</string>
+    <string name="confidence_format">Accuracy: %.2f%%</string>
+    <string name="article_image_description">article image</string>
+    <string name="resource_title">Resources</string>
 </resources>
