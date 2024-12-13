@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.ibscapstone.ui.login.LoginActivity
 import com.example.ibscapstone.ui.main.MainActivity
+import com.example.ibscapstone.ui.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -25,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
             if (isLoggedIn) {
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
-                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(Intent(this, RegisterActivity::class.java))
             }
             finish()
         }
