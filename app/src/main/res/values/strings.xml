@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IBS capstone</string>
+    <string name="app_name">IBS</string>
     <string name="analysis_result">analysis result\n</string>
     <string name="error_no_image">no image</string>
     <string name="analyzed_image">analyzed image\n</string>
